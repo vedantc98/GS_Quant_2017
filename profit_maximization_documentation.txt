@@ -1,0 +1,17 @@
+For Problem 1(Profit Maximization):
+	
+	Since the commodities(n) and the exchanges(n - 1) can be represented adequately by a tree structure, we use the nodes of the tree to represent commodities, and the edges to represent the exchanges.
+	In this case, the initial and final states of a trader can be represented by two nodes in this tree. Thus, the collection of all the transactions that the trader makes can be seen to be a simple path in the tree.
+	
+	ALGORITHM
+	Keeping this in mind, the algorithm for the problem is as follows:
+	1. Pick a node k in the tree. Run a depth-first-search(DFS) starting at this node. Using the properties of DFS, we can conclude that at some point, we iterate through all the paths starting from k in this tree. While traversing the tree, we ensure that we only consider paths upto the point where the total commodities remain positive(such that the exchange is possible).
+	2. For this starting node k, we find the maximum possible profit within the limits of our number of commodities(m).
+	3. We now proceed to repeat steps 1 and 2 for every node in the tree, thus considering all possible paths in the tree which could have been taken by our trader. In this process, we find the maximum possible profit that he could have earned.
+
+	DATA STRUCTURES:
+	A tree class was constructed to serve as a data structure for the problem due to the natural representation of the market as a tree. 
+
+	TIME AND SPACE COMPLEXITY:
+	The time complexity of this solution is O(n^2), since the implementation of DFS is linear, and DFS is run a linear number of times(equal to the number of nodes).
+	Space complexity of this solution is O(n). Since it is a tree, number of nodes and number of edges are nearly the same. The space required is of linear order. 

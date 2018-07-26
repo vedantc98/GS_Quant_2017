@@ -1,0 +1,22 @@
+For Problem 2(Trading Model):
+	
+	In this problem, since there is a similarity relation of N -1 unordered pairs, we can again use a Tree structure to represent each stock. The nodes represent stocks, while the edges represent the similarity relation. 
+	Here, we notice that A and B start at different nodes in this tree.
+	If we consider the node that A started at(u) to be the root, it is clear that B cannot trade the stock u, and thus cannot trade any of the stocks on the subtree formed by u and its descendents, not including in the branch that B is within. Vice versa(considering B) is also true.
+	Now, we observe that the best strategy for both algorithms would be to keep trading stocks along the path that joins A and B's initial positions(u and v). 
+	Then, the two adjacent vertices which A and B will arrive at before trading other stocks would divide the tree into two subgraphs, each claimed by A and B.
+
+	Keeping this in mind, the algorithm is as follows
+	ALGORITHM:
+	For each query,
+	1. First, using DFS, we search for the unique simple path between A and B. 
+	2. On obtaining the simple path, we get the nodes at which the trajectories of A and B collide(keeping in mind that A plays its turn first)
+	3. Now, we find the total sum of strengths of all the stocks in the subtree which A is claiming(using a modified version of DFS to obtain the sum).
+	4. Knowing the total sum of all strengths, we subtract from it the sum of strengths of A's stocks to get the sum of strengths of B's stocks. Hence we decide the winner.
+	5. Totalling this sum over all the queries, we find the required values.
+
+	DATA STRUCTURE:
+	Tree data structure was used in this problem, since it was most convenient for applying DFS.
+
+	TIME AND SPACE COMPLEXITY:
+	The solution was of time complexity O(n^2) and also of space complexity O(n^2) in dfs.
